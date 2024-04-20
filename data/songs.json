@@ -24,12 +24,6 @@
     "image": "https://images.unsplash.com/photo-1604951832436-90867d74f4de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
   },
   {
-    "id": 5,
-    "title": "Library",
-    "src": "https://e8b8e3q2.ssl.hwcdn.net/sounds/people/delft-library160.mp3",
-    "image": "https://images.unsplash.com/photo-1567168544646-208fa5d408fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-  },
-  {
     "id": 6,
     "title": "Keyboard",
     "src": "https://freesound.org/data/previews/537/537244_1920058-lq.mp3",
@@ -46,12 +40,6 @@
     "title": "Birds",
     "src": "https://freesound.org/data/previews/387/387978_6221013-lq.mp3",
     "image": "https://images.unsplash.com/photo-1616081352935-7daa6487b6ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
-  },
-  {
-    "id": 9,
-    "title": "Ocean",
-    "src": "https://e8b8e3q2.ssl.hwcdn.net/sounds/hipster/ocean.mp3",
-    "image": "https://images.unsplash.com/photo-1513553404607-988bf2703777?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
   },
   {
     "id": 10,

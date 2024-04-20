@@ -7,13 +7,17 @@ import {
   ToastAndroid,
 } from "react-native";
 import styles from "../styles";
-import { Audio } from "expo-av";
+import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 
 const Song = ({ item }) => {
   const [values, setValues] = React.useState({
     playing: false,
     sound: null,
+  });
+
+  Audio.setAudioModeAsync({
+    staysActiveInBackground: true,
   });
 
   const playSound = async () => {
