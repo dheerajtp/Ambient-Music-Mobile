@@ -9,11 +9,17 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: responsiveHeight(10), // Adjust padding as needed
+    marginVertical: responsiveHeight(10),
   },
   heading: {
     fontSize: 20,
     fontFamily: "Bold",
+  },
+  subHeading: {
+    fontSize: 18,
+    fontFamily: "Light",
+    color: "#666",
+    marginTop: 8,
   },
   contentContainer: {
     alignItems: "center",

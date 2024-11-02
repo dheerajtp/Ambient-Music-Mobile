@@ -1,34 +1,37 @@
 import React, { useCallback } from "react";
 import {
-  FlatList,
   SafeAreaView,
   Text,
   View,
+  TouchableOpacity,
+  Linking,
   ActivityIndicator,
   useColorScheme,
 } from "react-native";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import styles from "../styles";
-import songs from "../data/songs.json";
-import Song from "../components/Song";
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
-const App = () => {
+const About = () => {
   const [fontsLoaded, fontError] = useFonts({
     Bold: require("../fonts/Bold.ttf"),
     Light: require("../fonts/Light.ttf"),
   });
 
-  const colorScheme = useColorScheme(); 
+  const colorScheme = useColorScheme();
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
+
+  const openGitHub = () => {
+    Linking.openURL("https://github.com/dheerajtp/Ambient-Music-Mobile");
+  };
 
   if (!fontsLoaded && !fontError) {
     return (
@@ -47,18 +50,17 @@ const App = () => {
     <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       <View style={styles.contentContainer}>
-        <Text style={styles.heading}>Ambient Music</Text>
-        <View>
-          <FlatList
-            data={songs}
-            renderItem={({ item }) => <Song item={item} />}
-            keyExtractor={(item) => item.id}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+        <Text style={styles.subHeading}>Ambient Music</Text>
+        <Text style={styles.subHeading}>
+          Experience relaxation through sound
+        </Text>
+        <TouchableOpacity onPress={openGitHub}>
+          <Text style={styles.link}>View on GitHub</Text>
+        </TouchableOpacity>
+        <View style={styles.placeholder}></View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default App;
+export default About;
