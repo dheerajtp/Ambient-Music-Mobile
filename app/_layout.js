@@ -1,23 +1,7 @@
-import React from "react";
 import { Tabs } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useRouter } from "expo-router";
 
-const Layout = () => {
-  const router = useRouter();
-  
-  const checkOnboardingStatus = async () => {
-    const onboardingComplete = await AsyncStorage.getItem("onBoarded");
-    if (onboardingComplete === null || onboardingComplete.status === "false") {
-      router.push("/onBoardingScreen");
-    }
-  };
-
-  React.useEffect(() => {
-    checkOnboardingStatus();
-  }, []);
-
+const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
@@ -45,14 +29,8 @@ const Layout = () => {
           ),
         }}
       />
-      <Tabs.Screen
-        name="onBoardingScreen"
-        options={{
-          href: null,
-        }}
-      />
     </Tabs>
   );
 };
 
-export default Layout;
+export default TabsLayout;
