@@ -1,36 +1,43 @@
-import { Tabs } from "expo-router";
-import { FontAwesome } from "@expo/vector-icons";
+// app/_layout.js
+import React, { useEffect, useState } from "react";
+import { Stack } from "expo-router";
+import { useRouter, useSegments } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import TabsLayout from "./(tabs)/_layout";
 
-const TabsLayout = () => {
+const RootLayout = () => {
+  const [isOnboardingComplete, setIsOnboardingComplete] = useState(false);
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkOnboardingStatus = async () => {
+      const onboardingComplete = await AsyncStorage.getItem("onBoarded");
+      if (onboardingComplete === "true") {
+        setIsOnboardingComplete(true);
+        if (segments[0] === "onboarding") {
+          router.replace("/(tabs)/");
+        }
+      } else {
+        setIsOnboardingComplete(false);
+        if (segments[0] !== "onboarding") {
+          router.replace("/onBoardingScreen");
+        }
+      }
+    };
+
+    checkOnboardingStatus();
+  }, [segments]);
+
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: "#000",
-        tabBarInactiveTintColor: "#999",
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          headerShown: false,
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={24} color={color} />
-          ),
-        }}
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="onBoardingScreen"
+        options={{ gestureEnabled: false }}
       />
-      <Tabs.Screen
-        name="about"
-        options={{
-          headerShown: false,
-          tabBarLabel: "About",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="info-circle" size={24} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+      <Stack.Screen name="tabs" />
+    </Stack>
   );
 };
 
-export default TabsLayout;
+export default RootLayout;
